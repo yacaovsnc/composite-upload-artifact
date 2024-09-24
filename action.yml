@@ -16,9 +16,9 @@ runs:
         path: .github/
         if-no-files-found: ignore
     
-    - name: upload-artifacts v2
+    - name: upload-artifacts v3
       if: ${{ inputs.hosted != 'true' }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: test
         path: .github/
