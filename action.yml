@@ -11,15 +11,15 @@ runs:
     - name: upload-artifacts v4
       if: ${{ inputs.hosted == 'true' }}
       uses: actions/upload-artifact@v4
-        with:
-          name: test
-          path: .github/
-          if-no-files-found: ignore
+      with:
+        name: test
+        path: .github/
+        if-no-files-found: ignore
     
     - name: upload-artifacts v2
       if: ${{ inputs.hosted != 'true' }}
       uses: actions/upload-artifact@v2
-        with:
-          name: test
-          path: .github/
-          if-no-files-found: ignore
+      with:
+        name: test
+        path: .github/
+        if-no-files-found: ignore
