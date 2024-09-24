@@ -1,0 +1,25 @@
+name: 'Composite Upload-Artifact'
+description: 'Use different version of upload-artifact based on input'
+inputs:
+  hosted:  
+    description: 'Is running on hosted'
+    required: true
+    default: 'true'
+runs:
+  using: "composite"
+  steps:
+    - name: upload-artifacts v4
+      if: ${{ inputs.hosted == 'true' }}
+      uses: actions/upload-artifact@v4
+        with:
+          name: test
+          path: .github/
+          if-no-files-found: ignore
+    
+    - name: upload-artifacts v2
+      if: ${{ inputs.hosted != 'true' }}
+      uses: actions/upload-artifact@v2
+        with:
+          name: test
+          path: .github/
+          if-no-files-found: ignore
